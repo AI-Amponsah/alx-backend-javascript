@@ -4,3 +4,4 @@ nodesource_setup.sh
 package.json
 sum.js
 sum.test.js
+node_modules
