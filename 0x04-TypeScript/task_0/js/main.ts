@@ -8,17 +8,17 @@ interface Student {
 
   // create students
   const student1: Student = {
-    firstName: 'Gbeminiyi',
-    lastName: 'Samagbeyi',
+    firstName: 'Isaac',
+    lastName: 'Amponsah',
     age: 25,
-    location: 'Lagos'
+    location: 'Accra'
   }
 
   const student2: Student = {
-    firstName: 'Grace',
-    lastName: 'Samagbeyi',
+    firstName: 'Kremlin',
+    lastName: 'Amponsah',
     age: 62,
-    location: 'Lagos',
+    location: 'Kumasi',
   }
 
   // Create an array containing the two students
