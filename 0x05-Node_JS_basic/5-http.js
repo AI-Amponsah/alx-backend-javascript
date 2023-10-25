@@ -9,7 +9,7 @@ const countStudents = (path) => {
     fs.readFile(path, 'utf8', (err, resData) => {
       if (!err) {
         const printOut = [];
-        let printItem;
+        let printItem; // item to printed
         const data = resData.toString().split('\n');
         let students = data.filter((item) => item);
         students = students.map((item) => item.split(','));
