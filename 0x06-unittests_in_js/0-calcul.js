@@ -1,6 +1,6 @@
+// 0-calcul.js
 function calculateNumber(a, b) {
-  result = Math.round(Number(a)) + Math.round(Number(b));
-  return result;
+  return Math.round(a) + Math.round(b);
 }
 
 module.exports = calculateNumber;
