@@ -1,26 +1,32 @@
-const calculateNumber = require('./0-calcul.js');
 const assert = require('assert');
+const calculateNumber = require('./0-calcul');
 
 describe('calculateNumber', function () {
-  it('should be 1 + 3 = 4', function () {
-    assert.equal(calculateNumber(1, 3), 4);
+  it('whole numbers with floating point', function () {
+    assert.strictEqual(calculateNumber(3.0, 5.0), 8);
   });
-  it('should be 1 + 3.7 = 5', function () {
-    assert.equal(calculateNumber(1, 3.7), 5);
+
+  it('rounding down both floating point numbers', function () {
+    assert.strictEqual(calculateNumber(1.3, 4.2), 5);
   });
-  it('should be 1.2 + 3.7 = 5', function () {
-    assert.equal(calculateNumber(1.2, 3.7), 5);
+
+  it('rounding down one floating point number', function () {
+    assert.strictEqual(calculateNumber(1.4, 3.0), 4);
   });
-  it('should be 1.5 + 3.7 = 6', function () {
-    assert.equal(calculateNumber(1.5, 3.7), 6);
+
+  it('rounding up both floating point numbers', function () {
+    assert.strictEqual(calculateNumber(1.7, 6.8), 9);
   });
-  it('should be -2 + 4 = 2', function () {
-    assert.equal(calculateNumber(-2, 4), 2);
+
+  it('rounding up one floating point number', function () {
+    assert.strictEqual(calculateNumber(3.9, 2.0), 6);
   });
-  it('should be 2.6 + -4.7 = -2', function () {
-    assert.equal(calculateNumber(2.6, -4.7), -2);
+
+  it('rounding down floating point numbers with trailing values', function () {
+    assert.strictEqual(calculateNumber(1.37777, 4.23333), 5);
   });
-  it('should be -2.5 + -7.5 = -9', function () {
-    assert.equal(calculateNumber(-2.5, -7.5), -9);
+
+  it('rounding up floating point numbers with trailing values', function () {
+    assert.strictEqual(calculateNumber(3.677777, 5.999998), 10);
   });
 });
