@@ -1,3 +1,1 @@
-# Unittests in JS
-
-To be updated...
+# Solutions to tasks on 0x06. Unittests in JS
