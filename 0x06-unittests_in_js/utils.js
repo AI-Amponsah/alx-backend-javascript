@@ -1,22 +1,8 @@
-class Utils {
-  static calculateNumber(type, a, b) {
-    const roundA = Math.round(a);
-    const roundB = Math.round(b);
-  
-    if (type === 'SUM') {
-      return roundA + roundB;
-    } else if (type === 'SUBTRACT') {
-      return roundA - roundB;
-    } else if (type === 'DIVIDE') {
-      if (roundB === 0) {
-        return 'Error';
-      }
-  
-      return roundA / roundB;
-    }
-  
-    return 0;
+const Utils = {
+  calculateNumber(type, a, b) {
+    if (type === 'SUM') return Math.round(a) + Math.round(b);
+    if (type === 'SUBTRACT') return Math.round(a) - Math.round(b);
+    if (type === 'DIVIDE') return Math.round(b) === 0 ? 'Error' : Math.round(a) / Math.round(b);
   }
 }
-
 module.exports = Utils;

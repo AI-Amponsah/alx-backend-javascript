@@ -1,32 +1,31 @@
-const assert = require('assert');
-const calculateNumber = require('./0-calcul');
+const assert = require("assert");
+const { it, describe } = require("mocha");
+const calculateNumber = require("./0-calcul");
 
-describe('calculateNumber', function () {
-  it('whole numbers with floating point', function () {
-    assert.strictEqual(calculateNumber(3.0, 5.0), 8);
-  });
+describe("calculateNumber()", function() {
 
-  it('rounding down both floating point numbers', function () {
-    assert.strictEqual(calculateNumber(1.3, 4.2), 5);
-  });
-
-  it('rounding down one floating point number', function () {
-    assert.strictEqual(calculateNumber(1.4, 3.0), 4);
-  });
-
-  it('rounding up both floating point numbers', function () {
-    assert.strictEqual(calculateNumber(1.7, 6.8), 9);
-  });
-
-  it('rounding up one floating point number', function () {
-    assert.strictEqual(calculateNumber(3.9, 2.0), 6);
-  });
-
-  it('rounding down floating point numbers with trailing values', function () {
-    assert.strictEqual(calculateNumber(1.37777, 4.23333), 5);
-  });
-
-  it('rounding up floating point numbers with trailing values', function () {
-    assert.strictEqual(calculateNumber(3.677777, 5.999998), 10);
-  });
+    it(`checking if numbers round`, function() {
+      const res = calculateNumber(1, 2);
+      assert.strictEqual(res, 3);
+    });
+    it(`checking if numbers round`, function() {
+      const res = calculateNumber(1.4, 2.2);
+      assert.strictEqual(res, 3);
+    });
+    it(`checking if numbers round`, function() {
+      const res = calculateNumber(1.6, 2.7);
+      assert.strictEqual(res, 5);
+    });
+    it(`checking if numbers round`, function() {
+      const res = calculateNumber(0, 0);
+      assert.strictEqual(res, 0);
+    });
+    it(`checking if numbers round`, function() {
+      const res = calculateNumber(-1.6, -1.7);
+      assert.strictEqual(res, -4);
+    });
+    it(`checking if numbers round`, function() {
+      const res = calculateNumber(-1.4, -1.3);
+	assert.strictEqual(res, -2);
+    });
 });
