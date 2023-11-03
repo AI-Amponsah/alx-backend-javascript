@@ -1,134 +1,66 @@
+const calculateNumber = require('./1-calcul')
 const assert = require('assert');
-const calculateNumber = require('./1-calcul');
 
-describe('calculateNumber', () => {
-  describe('type == "SUM"', () => {
-    it('equal positive numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', 2.0, 2.0), 4);
-    });
-
-    it('equal positive numbers (alternate)', () => {
-      assert.strictEqual(calculateNumber('SUM', 2.3, 1.8), 4);
-    });
-
-    it('equal negative numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', -2.0, -2.0), -4);
-    });
-
-    it('equal negative numbers (alternate)', () => {
-      assert.strictEqual(calculateNumber('SUM', -2.3, -1.8), -4);
-    });
-
-    it('negative and positive numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', -2.0, 2.0), 0);
-    });
-
-    it('positive and negative numbers', () => {
-      assert.strictEqual(calculateNumber('SUM', 2.0, -2.0), 0);
-    });
-
-    it('0 and 0', () => {
-      assert.strictEqual(calculateNumber('SUM', 0.0, 0.0), 0);
-    });
+describe('SUM tests', () => {
+  it('Test for add negatives and positives', () => {
+    assert.strictEqual(calculateNumber('SUM', 4, 8), 12);
+    assert.strictEqual(calculateNumber('SUM', 1.9, 0), 2);
+    assert.strictEqual(calculateNumber('SUM', 6.1, 6.1), 12);
+    assert.strictEqual(calculateNumber('SUM', 0.1, 0.2), 0);
+    assert.strictEqual(calculateNumber('SUM', 0.1, 0.6), 1);
+    assert.strictEqual(calculateNumber('SUM', 1.4, 4.5), 6);
+    assert.strictEqual(calculateNumber('SUM', -1, -3), -4);
+    assert.strictEqual(calculateNumber('SUM', -1.4, -3.6), -5);
   });
 
-  describe('type == "SUBTRACT"', () => {
-    it('equal positive numbers', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', 2.0, 2.0), 0);
-    });
+  it('TypeErrors', () => {
+    assert.throws(() => calculateNumber('SUM', NaN, 5.6), { name: 'TypeError' });
+    assert.throws(() => calculateNumber('SUM', 5.6, NaN), { name: 'TypeError' });
+    assert.throws(() => calculateNumber('SUM', NaN, NaN), { name: 'TypeError' });
+  });
+});
 
-    it('equal positive numbers (alternate)', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', 2.3, 1.8), 0);
-    });
-
-    it('equal negative numbers', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', -2.0, -2.0), 0);
-    });
-
-    it('equal negative numbers (alternate)', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', -2.3, -1.8), 0);
-    });
-
-    it('negative and positive numbers', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', -2.0, 2.0), -4.0);
-    });
-
-    it('positive and negative numbers', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', 2.0, -2.0), 4.0);
-    });
-
-    it('0 and 0', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', 0.0, 0.0), 0);
-    });
+describe('SUBTRACT tests', () => {
+  it('Substracts positive and negatives', () => {
+    assert.strictEqual(calculateNumber('SUBTRACT', -1, -3), 2);
+    assert.strictEqual(calculateNumber('SUBTRACT', -1.4, -3.6), 3);
+    assert.strictEqual(calculateNumber('SUBTRACT', 8, 4), 4);
+    assert.strictEqual(calculateNumber('SUBTRACT', 1.9, 0), 2);
+    assert.strictEqual(calculateNumber('SUBTRACT', 6.1, 6.1), 0);
+    assert.strictEqual(calculateNumber('SUBTRACT', 1, 0.2), 1);
+    assert.strictEqual(calculateNumber('SUBTRACT', 0.6, 0.1), 1);
+    assert.strictEqual(calculateNumber('SUBTRACT', 4.5, 1.4), 4);
   });
 
-  describe('type == "DIVIDE"', () => {
-    it('positive numbers', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 8.0, 2.0), 4.0);
-    });
+  it('TypeErrors', () => {
+    assert.throws(() => calculateNumber('SUBTRACT', NaN, 5.6), { name: 'TypeError' });
+    assert.throws(() => calculateNumber('SUBTRACT', 5.6, NaN), { name: 'TypeError' });
+    assert.throws(() => calculateNumber('SUBTRACT', NaN, NaN), { name: 'TypeError' });
+  });
+  
+});
 
-    it('numbers with different signs', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', -7.0, 2.0), -3.5);
-    });
+describe('DIVIDE', () => {
+  it('positive and negative divide', () => {
+    assert.strictEqual(calculateNumber('DIVIDE', 8, 4), 2);
+    assert.strictEqual(calculateNumber('DIVIDE', 6.1, 1.7), 3);
+    assert.strictEqual(calculateNumber('DIVIDE', 6.1, 6.1), 1);
+    assert.strictEqual(calculateNumber('DIVIDE', -2, 1.1), -2);
+    assert.strictEqual(calculateNumber('DIVIDE', -4.4, -2.2), 2);
+    assert.strictEqual(calculateNumber('DIVIDE', 2.0, 1.1), 2);
+    assert.strictEqual(calculateNumber('DIVIDE', 0.6, 0.9), 1);
+    assert.strictEqual(calculateNumber('DIVIDE', 4.5, 5), 1);
+  });
 
-    it('numbers with different signs (alternate)', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 7.0, -2.0), -3.5);
-    });
+  it('returns', () => {
+    assert.strictEqual(calculateNumber('DIVIDE', 2, 0), 'Error');
+    assert.strictEqual(calculateNumber('DIVIDE', 3, 0), 'Error');
+    assert.strictEqual(calculateNumber('DIVIDE', 4, 0), 'Error');
+  });
 
-    it('negative numbers', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', -7.0, -2.0), 3.5);
-    });
-
-    it('equal positive numbers', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 2.0, 2.0), 1);
-    });
-
-    it('equal negative numbers', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', -2.0, -2.0), 1);
-    });
-
-    it('equal rounded up numbers', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 2.6, 3.0), 1);
-    });
-
-    it('equal rounded down numbers', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 2.4, 2.0), 1);
-    });
-
-    it('0 and positive number', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 0.0, 5.0), 0);
-    });
-
-    it('0 and negative number', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 0.0, -5.0), -0);
-    });
-
-    it('positive number and 0', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 5.0, 0), 'Error');
-    });
-
-    it('positive number and number rounded down to 0', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 5.0, 0.2), 'Error');
-    });
-
-    it('positive number and number rounded up to 0', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 5.0, -0.2), 'Error');
-    });
-
-    it('negative number and 0', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', -5.0, 0), 'Error');
-    });
-
-    it('negative number and number rounded down to zero', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', -5.0, 0.2), 'Error');
-    });
-
-    it('negative number and number rounded up to zero', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', -5.0, -0.2), 'Error');
-    });
-
-    it('0 and 0', () => {
-      assert.strictEqual(calculateNumber('DIVIDE', 0.0, 0.0), 'Error');
-    });
+  it('TypeErrors', () => {
+    assert.throws(() => calculateNumber('DIVIDE', NaN, 5.6), { name: 'TypeError' });
+    assert.throws(() => calculateNumber('DIVIDE', 5.6, NaN), { name: 'TypeError' });
+    assert.throws(() => calculateNumber('DIVIDE', NaN, NaN), { name: 'TypeError' });
   });
 });

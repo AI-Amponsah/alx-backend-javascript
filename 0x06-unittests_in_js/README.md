@@ -1,1 +1,1 @@
-# Unittests in JS
+# Unittesting in JavaScript
